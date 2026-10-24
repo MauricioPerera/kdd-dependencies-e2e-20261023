@@ -1,0 +1,17 @@
+{
+  "approved_ref": "406baca883c936542ee687637fb2e145d043060e",
+  "branch_tip": "25e88c05a574db1f8ea24ddd9f59f407696c6c87",
+  "command": "python -m unittest tests/test_order_shipping.py",
+  "contract_sha256": "a05428358b84f07c9fc3f8c0d5ef29a6b8790d91fc94942d52c15c25ef7cfc46",
+  "exit_code": 0,
+  "oracle_sha256": "b611f2b4c45826ba59ccb462f0b99c9b98d60a892112ec4855284300e9b0fa56",
+  "output_sha256": "d999c9f62692a547a8da61da1ee208dfd2887fe1333cc52f1fc158ba33a238d7",
+  "passed_tests": 10,
+  "runner": "unittest",
+  "schema_version": 1,
+  "stderr": "..........\n----------------------------------------------------------------------\nRan 10 tests in 0.915s\n\nOK\n",
+  "stdout": "",
+  "target_sha256": "258fd1349a4c0f6f5bf13ebec1bda65e74bf0eb86a20e709b04dd557217c12c6",
+  "task_id": "TASK-003",
+  "tested_commit": "225f26b56976a074464debddc184f475663a1732"
+}
