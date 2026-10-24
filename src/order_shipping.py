@@ -1,5 +1,7 @@
-"""Approved interface stub; implementation belongs to TASK-003."""
+"""Compute shipping from the validated total quantity."""
 from .order_input import normalize_items
 
+
 def shipping(items: object) -> int:
-    raise NotImplementedError("TASK-003 pending")
+    units = sum(quantity for _, quantity, _ in normalize_items(items))
+    return 0 if units >= 6 else 250 + 75 * (units - 1)
