@@ -1,5 +1,6 @@
-"""Approved interface stub; implementation belongs to TASK-002."""
+"""Compute an integer subtotal from validated order lines."""
 from .order_input import normalize_items
 
+
 def subtotal(items: object) -> int:
-    raise NotImplementedError("TASK-002 pending")
+    return sum(quantity * price for _, quantity, price in normalize_items(items))
