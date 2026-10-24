@@ -1,0 +1,148 @@
+{
+  "protected": [
+    ".agents/AGENTS.md",
+    ".agents/skills/kdd-okf-ccdd-hybrid/SKILL.md",
+    ".github/workflows/deploy-pages.yml",
+    ".github/workflows/trusted-pr-gate.yml",
+    ".github/workflows/validate.yml",
+    "knowledge/contracts/order-input.md",
+    "knowledge/contracts/order-quote-cli.md",
+    "knowledge/contracts/order-shipping.md",
+    "knowledge/contracts/order-total.md",
+    "knowledge/order-quote-demo.md",
+    "requirements-change-audit.txt",
+    "scripts/assemble_context.py",
+    "scripts/audit_forbids.py",
+    "scripts/audit_seals.py",
+    "scripts/behavior_contract.py",
+    "scripts/benchmark_gates.py",
+    "scripts/bootstrap_project.py",
+    "scripts/change_contract_multilang.py",
+    "scripts/export_gate_contract.py",
+    "scripts/guard_pr_baseline.py",
+    "scripts/init_project.py",
+    "scripts/lint_ascii.py",
+    "scripts/mcp_gate_dispatch.py",
+    "scripts/mcp_server.py",
+    "scripts/mutation_audit.py",
+    "scripts/native_level2.py",
+    "scripts/native_level2_worker.py",
+    "scripts/optional_evidence.py",
+    "scripts/preflight.py",
+    "scripts/quality_baseline.py",
+    "scripts/rule_engine.py",
+    "scripts/rule_hints.py",
+    "scripts/run_behavior.py",
+    "scripts/run_profile.py",
+    "scripts/scan_lint_suppressions.py",
+    "scripts/scan_secrets.py",
+    "scripts/setup_native_level2.py",
+    "scripts/task_evidence.py",
+    "scripts/task_git.py",
+    "scripts/task_model.py",
+    "scripts/tasks.py",
+    "scripts/validate_accessibility_findings.py",
+    "scripts/validate_attestation.py",
+    "scripts/validate_baseline.py",
+    "scripts/validate_behavior.py",
+    "scripts/validate_budgets.py",
+    "scripts/validate_change_contract.py",
+    "scripts/validate_changelog.py",
+    "scripts/validate_commit_message.py",
+    "scripts/validate_completion.py",
+    "scripts/validate_compliance_findings.py",
+    "scripts/validate_contracts.py",
+    "scripts/validate_dependency_eol_findings.py",
+    "scripts/validate_diagrams.py",
+    "scripts/validate_observability_findings.py",
+    "scripts/validate_okf.py",
+    "scripts/validate_perimeter.py",
+    "scripts/validate_privacy_findings.py",
+    "scripts/validate_rules.py",
+    "scripts/validate_security_findings.py",
+    "scripts/validate_skills.py",
+    "scripts/validate_specs.py",
+    "scripts/validate_tasks.py",
+    "scripts/validate_test_commands.py",
+    "scripts/validate_test_coverage_findings.py",
+    "scripts/validate_ux_page.py",
+    "scripts/verify_completion_runs.py",
+    "scripts/verify_quality.py",
+    "src/__init__.py",
+    "tests/__init__.py",
+    "tests/order_oracle_support.py",
+    "tests/test_order_input.py",
+    "tests/test_order_quote_cli.py",
+    "tests/test_order_shipping.py",
+    "tests/test_order_total.py"
+  ],
+  "implementation": [
+    "src/order_input.py",
+    "src/order_total.py",
+    "src/order_shipping.py",
+    "src/quote_cli.py"
+  ],
+  "pm": [
+    "knowledge/tasks/TASK-001.md",
+    "knowledge/tasks/TASK-002.md",
+    "knowledge/tasks/TASK-003.md",
+    "knowledge/tasks/TASK-004.md",
+    "docs/reports/DEPENDENCIES-E2E-REPORT.md"
+  ],
+  "required_kinds": [
+    "functional",
+    "adversarial",
+    "ui"
+  ],
+  "checks": [
+    {
+      "name": "contracts",
+      "kind": "structural",
+      "argv": [
+        "python",
+        "scripts/validate_contracts.py",
+        "knowledge/contracts"
+      ],
+      "timeout": 60
+    },
+    {
+      "name": "functional",
+      "kind": "functional",
+      "argv": [
+        "python",
+        "-m",
+        "unittest",
+        "tests.test_order_input.OrderInputFunctionalTests",
+        "tests.test_order_total.OrderTotalFunctionalTests",
+        "tests.test_order_shipping.OrderShippingFunctionalTests",
+        "tests.test_order_quote_cli.OrderQuoteFunctionalTests"
+      ],
+      "timeout": 60
+    },
+    {
+      "name": "adversarial",
+      "kind": "adversarial",
+      "argv": [
+        "python",
+        "-m",
+        "unittest",
+        "tests.test_order_input.OrderInputAdversarialTests",
+        "tests.test_order_total.OrderTotalAdversarialTests",
+        "tests.test_order_shipping.OrderShippingAdversarialTests",
+        "tests.test_order_quote_cli.OrderQuoteAdversarialTests"
+      ],
+      "timeout": 120
+    },
+    {
+      "name": "cli",
+      "kind": "ui",
+      "argv": [
+        "python",
+        "-m",
+        "unittest",
+        "tests.test_order_quote_cli.OrderQuoteCliTests"
+      ],
+      "timeout": 60
+    }
+  ]
+}
